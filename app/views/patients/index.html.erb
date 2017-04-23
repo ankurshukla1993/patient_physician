@@ -1,0 +1,50 @@
+<ol class="breadcrumb" style="margin-top: 70px">
+  <!-- <li><%#= link_to "Home", root_path %></li> -->
+  <li class='active'>Patients</li>
+</ol>
+<div class="row">
+  <div class="col-md-4">
+    <h2 style="margin-top: 25px;text-align: center;">Patients</h2>
+  </div>
+  <div class="col-md-8">
+    <%= link_to 'Add', new_patient_path, class: "btn btn-default pull-right" %>
+  </div>
+</div>
+<hr class="slim">
+<hr class="slim">
+<!-- Table -->
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Nationality</th>
+    <th>Mobile Number</th>
+    <th>Email</th>
+    <th>Marital Status</th>
+    <th>Blood Group</th>
+    <th class="col-md-1"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @patients.each do |patient| %>
+      <tr>
+        <td><%= link_to patient.name, edit_patient_path(patient) %></td>
+        <td><%= patient.gender %></td>
+        <td><%= patient.age %></td>
+        <td><%= patient.nationality %></td>
+        <td><%= patient.mobile_number %></td>
+        <td><%= patient.email_id %></td>
+        <td><%= patient.marital_status %></td>
+        <td><%= patient.blood_group%></td>
+        <td class="col-md-1 text-right">
+          <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_patient_path(patient) %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, patient, method: :delete,
+                      data: {title: 'Delete Patient?', confirm: "Are you sure you want to delete Patient #{patient.name}?"},
+                      class: "text-danger" %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

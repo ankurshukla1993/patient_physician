@@ -1,0 +1,42 @@
+<ol class="breadcrumb" style="margin-top: 70px">
+  <!-- <li><%#= link_to "Home", root_path %></li> -->
+  <li class='active'>Assignments</li>
+</ol>
+<div class="row">
+  <div class="col-md-4">
+    <h2 style="margin-top: 25px;text-align: center;">Assignments</h2>
+  </div>
+  <div class="col-md-8">
+    <%= link_to 'Add', new_assignment_path, class: "btn btn-default pull-right" %>
+  </div>
+</div>
+<hr class="slim">
+<hr class="slim">
+<!-- Table -->
+<table class="table">
+  <thead>
+  <tr>
+    <th>Patient Name</th>
+    <th>Referring Physician</th>
+    <th>Primary Care Physician</th>
+    <th>Pharmacy Name</th>
+    <th class="col-md-1"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= Patient.where(:id => assignment.patient_id).name %></td>
+        <td><%= Physician.where(:id => assignment.referring_physician_id).name %></td>
+        <td><%= Physician.where(:id => assignment.primary_care_physician_id).name %></td>
+        <td><%= assignment.pharmacy_name %></td>
+        <td class="col-md-1 text-right">
+          <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_assignment_path(assignment) %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, assignment, method: :delete,
+                      data: {title: 'Delete Assignment?', confirm: "Are you sure you want to delete Assignment ?"},
+                      class: "text-danger" %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

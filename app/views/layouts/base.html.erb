@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wallet Buddy</title>
+		<%= include_gon  %>
+		<%= stylesheet_link_tag "admin", media: "all", "data-turbolinks-track" => false %>
+		<!-- Include Editor style. -->
+		<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.2/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+		<link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.2/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+
+		<%= javascript_include_tag "admin", "data-turbolinks-track" => false %>
+		<!-- Include JS file. -->
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.4.2/js/froala_editor.min.js'></script>
+		<script src="https://use.fontawesome.com/4534d7a2be.js"></script>
+		<%= csrf_meta_tags %>
+		<!-- Material Icons -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+
+	<body data-page="<%= admin_data_page_attributes %>" style="margin-top: 60px;">
+		<%= render 'layouts/header' %>
+		<div class="container" role="main">
+			<%= render 'layouts/messages' %>
+			<%= yield %>
+		</div>
+	</body>
+</html>

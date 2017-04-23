@@ -1,0 +1,51 @@
+<ol class="breadcrumb" style="margin-top: 70px">
+  <li class='active'>Physicians</li>
+</ol>
+<div class="row">
+  <div class="col-md-4">
+    <h2 style="margin-top: 25px;text-align: center;">Physicians</h2>
+  </div>
+  <div class="col-md-8">
+    <%= link_to 'Add', new_physician_path, class: "btn btn-default pull-right" %>
+  </div>
+</div>
+<hr class="slim">
+<hr class="slim">
+<!-- Table -->
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Speciality</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Nationality</th>
+    <th>Mobile</th>
+    <th>Email</th>
+    <th>Marital Status</th>
+    <th>Blood Group</th>
+    <th class="col-md-1"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @physicians.each do |physician| %>
+      <tr>
+        <td><%= link_to physician.name, edit_physician_path(physician) %></td>
+        <td><%= physician.speciality %></td>
+        <td><%= physician.gender %></td>
+        <td><%= physician.age %></td>
+        <td><%= physician.nationality %></td>
+        <td><%= physician.mobile_number %></td>
+        <td><%= physician.email_id %></td>
+        <td><%= physician.marital_status %></td>
+        <td><%= physician.blood_group%></td>
+        <td class="col-md-1 text-right">
+          <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_physician_path(physician) %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, physician, method: :delete,
+                      data: {title: 'Delete physician?', confirm: "Are you sure you want to delete physician #{physician.name}?"},
+                      class: "text-danger" %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

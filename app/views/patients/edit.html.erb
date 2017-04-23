@@ -1,0 +1,6 @@
+<ol class="breadcrumb" style="margin-top: 70px">
+  <li><%= link_to "Patients", patients_path %></li>
+  <li><%= link_to @patient.id, edit_patient_path(@patient) %></li>
+  <li class="active">Edit</li>
+</ol>
+<%= render 'form' %>

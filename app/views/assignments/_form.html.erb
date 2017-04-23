@@ -1,0 +1,56 @@
+<%= simple_form_for(@assignment , :html => {class:'form-horizontal' }) do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <h2 style="margin-top: 0px;"><%= @assignment.persisted? ? "Edit " : "New assignment" %></h2>
+    </div>
+    <div class="col-md-8">
+    </div>
+  </div>
+  <hr class="slim">
+  <div class='row'>
+    <% if @assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this @assignment from being saved:</h2>
+
+      <ul>
+      <% @assignment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class='col-md-9 col-md-offset-2'>
+      <div class="form-inputs">
+
+          <div class="col-md-3 form-group">Patient</div>
+          <div class="col-md-9 form-group">
+                  <%= f.collection_select :patient_id, Patient.all, :id,:name, {},{:class=>"form-control selectpicker cardsection_selector"} %>
+          </div>
+
+          <div class="col-md-3 form-group">Referring Physician</div>
+          <div class="col-md-9 form-group">
+                  <%= f.collection_select :referring_physician_id, Physician.all, :id,:name, {},{:class=>"form-control selectpicker cardsection_selector"} %>
+          </div>
+
+          <div class="col-md-3 form-group">Primary Care Physician</div>
+          <div class="col-md-9 form-group">
+                  <%= f.collection_select :primary_care_physician_id, Physician.all, :id,:name, {},{:class=>"form-control selectpicker cardsection_selector"} %>
+          </div>
+
+          <div class="col-md-3 form-group">Pharmacy Name</div>
+          <div class="col-md-9 form-group">
+                  <%= f.text_field :pharmacy_name, :class=>"form-control "%>
+          </div>
+
+      </div>
+
+      </div>
+    </div>
+  <hr class="slim">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Back', assignments_path, class:'btn btn-default' %>
+      <%= f.button :submit, class:'btn btn-default pull-right' %>
+    </div>
+  </div>
+<% end %>

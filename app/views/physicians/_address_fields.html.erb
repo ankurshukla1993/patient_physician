@@ -1,0 +1,58 @@
+<div class="nested-fields" style="  border: 1px solid #ccc;padding: 10px;margin-top: 12px;border-radius: 4px;">
+<h4 style="border-bottom:1px solid #03C9A9; padding-bottom:8px;">Address<%= f.object.try(:address_for)%></h4>
+
+  <div class="field form-group start_date_sib">
+    <%= f.label :address_for, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+    <div class="col-sm-10">
+    <%=f.text_field :address_for,:class=>"form-control "%>
+    </div>
+  </div>
+
+  <div class="field form-group start_date_sib">
+    <%= f.label :flat_number, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+    <div class="col-sm-10">
+    <%=f.text_field :flat_number,:class=>"form-control "%>
+    </div>
+  </div>
+
+  <div class="field form-group minimum_days_sib" style="">
+    <%= f.label :street_name, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+    <div class="col-sm-10">
+    <%=f.text_field :street_name,:class=>"form-control " %>
+    </div>
+  </div>
+
+
+  <div class="field form-group end_date_sib">
+    <%= f.label :area, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+    <div class="col-sm-10">
+    <%=f.text_field :area,:class=>"form-control "%>
+    </div>
+  </div>
+
+  <div class="field form-group multiple_date_sib">
+    <%= f.label :city, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+    <div class="col-sm-10">
+    <%=f.text_field :city,:class=>"form-control "%>
+    </div>
+  </div>
+
+  <div class="field form-group multiple_date_sib">
+    <%= f.label :state, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+    <div class="col-sm-10">
+    <%=f.text_field :state,:class=>"form-control "%>
+    </div>
+  </div>
+
+  <div class="field form-group multiple_date_sib">
+    <%= f.label :pin_code, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+    <div class="col-sm-10">
+    <%=f.text_field :pin_code,:class=>"form-control "%>
+    </div>
+  </div>
+
+
+
+<%=link_to_remove_association "Remove Address", f%>
+
+</div>

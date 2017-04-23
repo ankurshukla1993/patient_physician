@@ -1,0 +1,99 @@
+<%= simple_form_for(@patient , :html => {class:'form-horizontal' }) do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <h2 style="margin-top: 0px;"><%= @patient.persisted? ? "Edit " + @patient.name.to_s : "New Patient" %></h2>
+    </div>
+    <div class="col-md-8">
+    </div>
+  </div>
+  <hr class="slim">
+  <div class='row'>
+    <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this @patient from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class='col-md-6 col-md-offset-3'>
+      <div class="form-inputs">
+        <div class="field form-group multiple_date_sib">
+          <%= f.label :name, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+          <div class="col-sm-10">
+          <%=f.text_field :name,:class=>"form-control "%>
+          </div>
+        </div>
+
+        <div class="field form-group multiple_date_sib">
+          <%= f.label :gender, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+          <div class="col-sm-10">
+          <%=f.text_field :gender,:class=>"form-control "%>
+          </div>
+        </div>
+
+        <div class="field form-group multiple_date_sib">
+          <%= f.label :age, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+          <div class="col-sm-10">
+          <%=f.number_field :age,:class=>"form-control "%>
+          </div>
+        </div>
+
+        <div class="field form-group multiple_date_sib">
+          <%= f.label :nationality, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+          <div class="col-sm-10">
+          <%=f.text_field :nationality,:class=>"form-control "%>
+          </div>
+        </div>
+
+        <div class="field form-group multiple_date_sib">
+          <%= f.label :mobile_number, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+          <div class="col-sm-10">
+          <%=f.text_field :mobile_number,:class=>"form-control "%>
+          </div>
+        </div>
+
+        <div class="field form-group multiple_date_sib">
+          <%= f.label :email_id, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+          <div class="col-sm-10">
+          <%=f.email_field :email_id,:class=>"form-control "%>
+          </div>
+        </div>
+
+        <div class="field form-group multiple_date_sib">
+          <%= f.label :marital_status, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+          <div class="col-sm-10">
+          <%=f.text_field :marital_status,:class=>"form-control "%>
+          </div>
+        </div>
+
+        <div class="field form-group multiple_date_sib">
+          <%= f.label :blood_group, :class=>"col-sm-2 control-label", :style => "margin-top: 15px;" %><br>
+          <div class="col-sm-10">
+          <%=f.text_field :blood_group,:class=>"form-control "%>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="form-group">
+             <%=f.fields_for :addresses, :required=>true do |address| %>
+             <%=render 'address_fields', :f => address%>
+             <%end%>
+             <%=link_to_add_association 'Add Address', f, :addresses, :style=>"margin-top: 20px;color: #FFFFFF;", :class=>"btn btn-warning date-custom-btn"%>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <hr class="slim">
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Back', patients_path, class:'btn btn-default' %>
+      <%= f.button :submit, class:'pull-right' %>
+    </div>
+  </div>
+<% end %>
